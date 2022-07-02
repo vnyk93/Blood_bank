@@ -1,0 +1,136 @@
+{% include 'blocks/userheader.html' %}
+<section class="section about-me" data-section="section1">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Blood Request !</h2>
+        <div class="line-dec"></div>          
+      </div>
+
+      <b class='text-danger'>
+       
+      </b>
+      <form id="contact" action="/user/saverequest" 
+      method="post">
+        <div class="row">
+          <div class="col-md-6">
+            <fieldset>
+              <input
+                name="name"
+                type="text"
+                class="form-control"
+                id="name"
+                placeholder="Person name..."
+                required
+              />
+            </fieldset>
+          </div>
+          <div class="col-md-6">
+            <fieldset>
+              <input
+                name="phone"
+                type="text"
+                class="form-control"
+                id="phone"
+                placeholder="Phone..."
+                required=""
+              />
+            </fieldset>
+          </div>
+
+          <div class="col-md-6">
+            <fieldset>
+        <select name='group' 
+        class='form-control'required>
+          <option>A+</option>
+          <option>A-</option>
+          <option>B+</option>
+          <option>B-</option>
+          <option>O+</option>
+          <option>O-</option>
+          <option>AB+</option>
+          <option>AB-</option>                
+        </select>
+
+            </fieldset>
+          </div>
+         
+          <div class="col-md-6">
+            <fieldset>
+              <input
+                name="hospital"
+                type="text"
+                class="form-control"
+                id="hospital"
+                placeholder="Hospital..."
+                required
+              />
+            </fieldset>
+          </div>
+
+          <div class="col-md-6">
+            <fieldset>
+              <input
+                name="city"
+                type="text"
+                class="form-control"
+                id="city"
+                placeholder="City..."
+                required
+              />
+            </fieldset>
+          </div>
+
+       
+         
+          <div class="col-md-6">
+            <fieldset>
+              <button type="submit" id="form-submit" class="button">
+                Send Request
+              </button>
+            </fieldset>
+          </div>
+        </div>
+      </form>
+      <hr>
+      <h3>Your Request</h3>
+      <table class='table'>
+          <tr>
+            <th>Person Name</th>
+            <th>Phone</th>
+            <th>Hospital</th>
+            <th>City</th>
+            <th>Blood Group</th>
+          </tr>
+          {% for req in userrequest %}
+              <tr>
+                <td>{{req.0}}</td>
+                <td>{{req.1}}</td>
+                <td>{{req.3}}</td>
+                <td>{{req.4}}</td>
+                <td>{{req.2}}</td>
+              </tr>
+          {% endfor %}
+      </table>
+
+      <h3>Other Request</h3>
+      <table class='table'>
+          <tr>
+            <th>Person Name</th>
+            <th>Phone</th>
+            <th>Hospital</th>
+            <th>City</th>
+            <th>Blood Group</th>
+          </tr>
+          {% for req in otherrequest %}
+              <tr>
+                <td>{{req.0}}</td>
+                <td>{{req.1}}</td>
+                <td>{{req.3}}</td>
+                <td>{{req.4}}</td>
+                <td>{{req.2}}</td>
+              </tr>
+          {% endfor %}
+      </table>
+    </div>
+</section>
+{% include 'blocks/footer.html' %}
